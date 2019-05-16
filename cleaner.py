@@ -15,7 +15,7 @@ try:
     with open(MY_DIR + "\\keepedirs.txt") as f:
         NEVER_DELETE_DIR = f.readlines()
         NEVER_DELETE_DIR = [x.strip() for x in NEVER_DELETE_DIR]
-        if len(NEVER_DELETE_DIR) == 0:
+        if NEVER_DELETE_DIR == []:
             raise Exception()
 except:
     print("No 'keepedirs.txt' found or is empty")
