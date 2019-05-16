@@ -11,7 +11,7 @@ LIST_OF_DIRECTORY = os.listdir(GIVEN_DIR)
 MY_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-with open(MY_DIR + "\\exc.txt") as f:
+with open(MY_DIR + "\\keepedirs.txt") as f:
     NEVER_DELETE_DIR = f.readlines()
     NEVER_DELETE_DIR = [x.strip() for x in NEVER_DELETE_DIR]
 
