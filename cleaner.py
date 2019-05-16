@@ -17,7 +17,6 @@ try:
         NEVER_DELETE_DIR = [x.strip() for x in NEVER_DELETE_DIR]
         if len(NEVER_DELETE_DIR) == 0:
             raise Exception()
-            
 except:
     print("No 'keepedirs.txt' found or is empty")
     sys.exit()
@@ -32,4 +31,4 @@ try:
             elif os.path.isdir(os.path.join(GIVEN_DIR, i)):
                 shutil.rmtree(os.path.join(GIVEN_DIR, i), ignore_errors=True)
 except:
-    pass
+    sys.exit()
