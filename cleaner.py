@@ -6,7 +6,7 @@ import os
 import sys
 import shutil
 
-GIVEN_DIR = "f:\\general"
+GIVEN_DIR = sys.argv[1]
 LIST_OF_DIRECTORY = os.listdir(GIVEN_DIR)
 MY_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -18,7 +18,7 @@ try:
         if NEVER_DELETE_DIR == []:
             raise Exception()
 except:
-    print("No 'keepedirs.txt' found or is empty")
+    print("No 'keepedirs.txt' found, or is empty")
     sys.exit()
 
 try:
