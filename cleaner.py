@@ -6,21 +6,30 @@ import os
 import sys
 import shutil
 
-GIVEN_DIR = sys.argv[1]
+GIVEN_DIR = "f:\\general"
 LIST_OF_DIRECTORY = os.listdir(GIVEN_DIR)
 MY_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
-with open(MY_DIR + "\\keepedirs.txt") as f:
-    NEVER_DELETE_DIR = f.readlines()
-    NEVER_DELETE_DIR = [x.strip() for x in NEVER_DELETE_DIR]
+try:
+    with open(MY_DIR + "\\keepedirs.txt") as f:
+        NEVER_DELETE_DIR = f.readlines()
+        NEVER_DELETE_DIR = [x.strip() for x in NEVER_DELETE_DIR]
+        if len(NEVER_DELETE_DIR) == 0:
+            raise Exception()
+            
+except:
+    print("No 'keepedirs.txt' found or is empty")
+    sys.exit()
 
-
-for i in LIST_OF_DIRECTORY:
-    if i in NEVER_DELETE_DIR:
-        pass
-    else:
-        if os.path.isfile(os.path.join(GIVEN_DIR, i)):
-            os.remove(os.path.join(GIVEN_DIR, i))
-        elif os.path.isdir(os.path.join(GIVEN_DIR, i)):
-            shutil.rmtree(os.path.join(GIVEN_DIR, i), ignore_errors=True)
+try:
+    for i in LIST_OF_DIRECTORY:
+        if i in NEVER_DELETE_DIR:
+            pass
+        else:
+            if os.path.isfile(os.path.join(GIVEN_DIR, i)):
+                os.remove(os.path.join(GIVEN_DIR, i))
+            elif os.path.isdir(os.path.join(GIVEN_DIR, i)):
+                shutil.rmtree(os.path.join(GIVEN_DIR, i), ignore_errors=True)
+except:
+    pass
